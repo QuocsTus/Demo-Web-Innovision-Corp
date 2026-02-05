@@ -88,6 +88,73 @@ const Homepage: React.FC = () => {
     },
   ];
 
+  const clientSections = [
+    {
+      title: "Our Clients",
+      items: [
+        {
+          desc: "Enterprises - Manufacturing, real estate, and technology sectors.",
+        },
+        {
+          desc: "Government - Agencies adopting AI for efficiency and public services.",
+        },
+        {
+          desc: "Startups & SMEs - Outsourcing AI, software, and firmware development.",
+        },
+      ],
+    },
+    {
+      title: "Our Partners",
+      items: [
+        {
+          desc: "Semiconductors - Supporting hardware and embedded ecosystems.",
+        },
+        {
+          desc: "Cloud Providers - AWS/GCP – cloud & AI infrastructure.",
+        },
+        {
+          desc: "Factories - Electronics units for Edge AI device deployment.",
+        },
+        {
+          desc: "Academia - Universities co-developing AI innovation.",
+        },
+      ],
+    },
+  ];
+
+  const partnerLogos = [
+    "./logo/ais.png",
+    "./logo/arrow.png",
+    "./logo/itmon.png",
+    "./logo/devzone.png",
+    "./logo/qualcomm.png",
+    "./logo/aws.png",
+    "./logo/infineon.png",
+    "./logo/vinfast.png",
+    "./logo/nuvoton.png",
+    "./logo/hitec.png",
+    "./logo/lidinco.png",
+    "./logo/nordic.png",
+    "./logo/rostek.png",
+    "./logo/nxp.png",
+    "./logo/OHSPTEK.png",
+    "./logo/ais.png", //Nhan doi
+    "./logo/arrow.png",
+    "./logo/itmon.png",
+    "./logo/devzone.png",
+    "./logo/qualcomm.png",
+    "./logo/aws.png",
+    "./logo/infineon.png",
+    "./logo/vinfast.png",
+    "./logo/nuvoton.png",
+    "./logo/hitec.png",
+    "./logo/lidinco.png",
+    "./logo/nordic.png",
+    "./logo/rostek.png",
+    "./logo/nxp.png",
+    "./logo/OHSPTEK.png",
+  ];
+
   // --- EFFECTS ---
 
   // 1. Smooth Scroll (Lenis)
@@ -130,24 +197,40 @@ const Homepage: React.FC = () => {
       <Header isScrolled={isScrolled} />
 
       {/* 2. HERO SECTION */}
+      {/* BANNER ĐẦU TRANG - THIẾT KẾ ĐỒNG BỘ HOMEPAGE */}
       <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+        {/* Lớp nền ảnh với hiệu ứng Parallax */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center"
           style={{
-            backgroundImage: "url('/bg.png')",
+            backgroundImage: "url('/bg.png')", // Dùng chung ảnh nền hoặc đổi thành '/bg-about.png'
             transform: `translateY(${scrollY * 0.4}px)`,
           }}
         />
+
+        {/* Lớp phủ Gradient trắng phía trên và dưới để hòa quyện vào nội dung */}
         <div className="absolute top-0 left-0 w-full h-1/3 bg-gradient-to-b from-white via-white/40 to-transparent z-[1]" />
         <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white via-white/40 to-transparent z-[1]" />
 
+        {/* Nội dung Banner */}
         <div className="relative z-[2] text-center w-full max-w-[1400px] mx-auto px-6 md:px-12">
-          <h1 className="text-[44px] md:text-[72px] font-bold text-[#3c90fc] tracking-tighter">
-            Beyond Intelligent
-          </h1>
-          <p className="mt-6 text-[16px] md:text-[18px] text-[#3c3c3c] font-medium max-w-2xl mx-auto">
-            AI | LLM | Edge Computing – Transforming Data into Real-World Impact
-          </p>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-[44px] md:text-[72px] font-bold text-[#3c90fc] tracking-tighter"
+          >
+            ABOUT US
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="mt-6 text-[16px] md:text-[18px] text-[#3c3c3c] font-medium max-w-2xl mx-auto"
+          >
+            Leading the way in AI, LLM, and Edge Computing solutions for a
+            smarter future.
+          </motion.p>
         </div>
       </div>
 
@@ -171,7 +254,7 @@ const Homepage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
-                className={`group relative p-8 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-6 flex flex-col items-center text-center rounded-[32px]
+                className={`group relative p-8 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-6 flex flex-col items-center text-center
                 ${index === 1 ? "md:h-[400px] md:-translate-y-8 z-20 border-[#3c90fc]/20" : "md:h-[340px] z-10"}`}
               >
                 <div className="w-16 h-16 rounded-2xl bg-[#3c90fc]/10 flex items-center justify-center mb-8">
@@ -206,7 +289,7 @@ const Homepage: React.FC = () => {
             {howWeWork.map((item, index) => (
               <div
                 key={index}
-                className="group relative h-[450px] rounded-[24px] overflow-hidden cursor-pointer shadow-lg"
+                className="group relative h-[450px] overflow-hidden cursor-pointer shadow-lg"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
@@ -218,7 +301,6 @@ const Homepage: React.FC = () => {
                     <h3 className="text-white text-[22px] font-bold mb-2">
                       {item.title}
                     </h3>
-                    <div className="w-full h-[2px] bg-[#3c90fc]" />
                   </div>
                   <p className="text-white/80 text-[14px] mt-4">
                     {item.description}
@@ -309,6 +391,86 @@ const Homepage: React.FC = () => {
         </div>
       </section>
 
+      {/* 6. SECTION: CLIENTS & PARTNERS */}
+      <section className="relative z-[10] bg-white py-16 md:py-20">
+        <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12">
+          <div className="text-center mb-12">
+            <h1 className="text-[32px] md:text-[42px] font-bold text-[#3c90fc] mb-3">
+              Clients & Partners
+            </h1>
+            <p className="text-[16px] text-[#3c3c3c] font-medium opacity-80">
+              Trusted by industry leaders.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+            {clientSections.map((section, idx) => {
+              const isLeft = idx === 0;
+              return (
+                <div
+                  key={idx}
+                  className={`flex flex-col gap-6 ${isLeft ? "lg:items-end lg:text-right" : "lg:items-start lg:text-left"}`}
+                >
+                  <div
+                    className={`flex items-center gap-3 ${isLeft ? "flex-row-reverse" : "flex-row"}`}
+                  >
+                    <h2 className="text-[22px] font-bold uppercase">
+                      {section.title}
+                    </h2>
+                  </div>
+                  <div className="grid gap-3 w-full">
+                    {section.items.map((item, i) => (
+                      <div
+                        key={i}
+                        className={`p-4 rounded-xl border border-gray-50 hover:bg-gray-50 flex flex-col ${isLeft ? "lg:items-end" : "lg:items-start"}`}
+                      >
+                        <p className="text-[#474363] text-[14px] opacity-75">
+                          {item.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+         
+          {/* 2. KHỐI LOGO CHẠY NGANG (INFINITE MARQUEE) */}
+          <div className="relative mt-20 pt-10 border-t border-gray-50">
+            {/* Tiêu đề ẩn, bạn có thể uncomment nếu muốn hiện lại */}
+            {/* <div className="text-center mb-12">
+              <span className="text-[14px] font-bold text-gray-400 uppercase tracking-[0.3em]">
+                Trusted by Industry Leaders
+              </span>
+            </div> */}
+
+            {/* Hiệu ứng mờ 2 đầu để logo xuất hiện/biến mất mượt mà */}
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+
+            <div className="flex overflow-hidden group">
+              <motion.div
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{ duration: 40, repeat: Infinity, ease: "linear" }} // Tăng duration để chạy chậm hơn
+                className="flex whitespace-nowrap gap-20 items-center py-4"
+              >
+                {partnerLogos.map((logoPath, i) => (
+                  <div
+                    key={i}
+                    className="flex-shrink-0 w-32 h-12 flex items-center justify-center cursor-pointer 
+                               grayscale-0 opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                  >
+                    <img
+                      src={logoPath}
+                      alt={`Partner Logo ${i + 1}`}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </div>
   );
