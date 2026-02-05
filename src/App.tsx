@@ -3,9 +3,9 @@ import "./App.css";
 import Homepage from "./components/Homepage";
 import AboutUs from "./components/AboutUs";
 import Solutions from "./components/SolutionsPage";
-import AISolution from "./components/Solutions/solution1";
-import IndustrialAIDetail from "./components/Solutions/solution2";
-import SoftwareDevelopment from "./components/Solutions/solution3";
+import AISolution from "./components/Solutions-Page/solution1";
+import IndustrialAIDetail from "./components/Solutions-Page/solution2";
+import SoftwareDevelopment from "./components/Solutions-Page/solution3";
 
 function App() {
   return (
