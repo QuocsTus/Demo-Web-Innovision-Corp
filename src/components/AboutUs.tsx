@@ -42,15 +42,23 @@ const AboutUs: React.FC = () => {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
+
+    // SỬA LỖI RELOAD: Dùng requestAnimationFrame để ép Lenis về 0 ngay lập tức
+    requestAnimationFrame(() => {
+      lenis.scrollTo(0, { immediate: true });
+    });
+
     const raf = (time: number) => {
       lenis.raf(time);
       requestRef.current = requestAnimationFrame(raf);
     };
     requestRef.current = requestAnimationFrame(raf);
+
     lenis.on("scroll", (e: ScrollEvent) => {
       setScrollY(e.scroll);
       setIsScrolled(e.scroll > 50);
     });
+
     return () => {
       lenis.destroy();
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
@@ -61,21 +69,20 @@ const AboutUs: React.FC = () => {
     <div className="bg-white min-h-screen w-full overflow-x-hidden font-['Montserrat']">
       <Header isScrolled={isScrolled} />
 
-      {/* 1. BANNER ĐẦU TRANG - Tương tự Hero Homepage nhưng gọn hơn */}
-      {/* BANNER ĐẦU TRANG - THIẾT KẾ ĐỒNG BỘ HOMEPAGE */}
-      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-        {/* Lớp nền ảnh với hiệu ứng Parallax */}
+      {/* 1. BANNER ĐẦU TRANG */}
+      <div className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        {/* Đã thêm bg-center và bg-cover để ảnh lấy đủ nội dung */}
         <div
-          className="absolute inset-0 z-0 bg-cover bg-center"
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/banner-aboutus.jpg')", // Dùng chung ảnh nền hoặc đổi thành '/bg-about.png'
+            backgroundImage: "url('/banner-aboutus.jpg')",
             transform: `translateY(${scrollY * 0.4}px)`,
           }}
         />
 
-        {/* Lớp phủ Gradient trắng phía trên và dưới để hòa quyện vào nội dung */}
-        <div className="absolute top-0 left-0 w-full h-1/5 bg-gradient-to-b from-white via-white/40 to-transparent z-[1]" />
-        <div className="absolute bottom-0 left-0 w-full h-1/5 bg-gradient-to-t from-white via-white/40 to-transparent z-[1]" />
+        {/* Lớp phủ Gradient trắng trên/dưới */}
+        <div className="absolute top-0 left-0 w-full h-2/5 bg-gradient-to-b from-white via-white/40 to-transparent z-[1]" />
+        <div className="absolute bottom-0 left-0 w-full h-2/5 bg-gradient-to-t from-white via-white/40 to-transparent z-[1]" />
 
         {/* Nội dung Banner */}
         <div className="relative z-[2] text-left w-full max-w-[1400px] mx-auto px-6 md:px-12">
@@ -91,18 +98,18 @@ const AboutUs: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="mt-6 text-[16px] md:text-[18px] text-[#fff] font-medium max-w-2xl"
+            /* Chỉnh lại màu chữ sang xám đậm để dễ đọc hơn trên nền mờ trắng */
+            className="mt-6 text-[16px] md:text-[18px] text-white font-semibold max-w-2xl"
           >
             Engineering Intelligence for the Real World
           </motion.p>
         </div>
       </div>
 
-      {/* 2. SECTION: ABOUT INNOVISION - Thiết kế lồng ghép đặc thù công nghệ */}
+      {/* 2. SECTION: ABOUT INNOVISION */}
       <section className="relative z-[10] bg-white py-16 md:py-24">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Cột trái: Hình ảnh/Decor công nghệ */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -113,13 +120,12 @@ const AboutUs: React.FC = () => {
                 <img
                   src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800"
                   alt="Tech Focus"
+                  className="w-full h-full object-cover"
                 />
               </div>
-              {/* Box trang trí phía sau */}
               <div className="absolute -bottom-6 -right-6 w-full h-full bg-[#3c90fc]/5 rounded-[32px] -z-10" />
             </motion.div>
 
-            {/* Cột phải: Nội dung văn bản */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -130,10 +136,10 @@ const AboutUs: React.FC = () => {
                 About <span className="text-[#3c90fc]">Innovision</span>
               </h2>
               <div className="flex flex-col gap-3">
-                <span className=" py-1.5  text-[13px] font-bold text-[#474363]">
+                <span className="py-1.5 text-[13px] font-bold text-[#474363]">
                   Software Technology Solutions
                 </span>
-                <span className=" py-1.5  text-[13px] font-bold text-[#474363]">
+                <span className="py-1.5 text-[13px] font-bold text-[#474363]">
                   Custom Software Services
                 </span>
               </div>
@@ -157,14 +163,13 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. SECTION: VISION & MISSION - Thiết kế đối xứng Clean & Tech */}
+      {/* 3. SECTION: VISION & MISSION */}
       <section className="relative z-[10] bg-gray-50 py-16 md:py-24">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Cột Vision */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="p-10 bg-white  shadow-sm border border-gray-100 flex flex-col gap-6"
+            className="p-10 bg-white shadow-sm border border-gray-100 flex flex-col gap-6 rounded-3xl"
           >
             <h2 className="text-[28px] md:text-[36px] font-bold text-black uppercase tracking-tight">
               Our <span className="text-[#3c90fc]">Vision</span>
@@ -176,11 +181,10 @@ const AboutUs: React.FC = () => {
             </p>
           </motion.div>
 
-          {/* Cột Mission */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="p-10 bg-white  shadow-sm border border-gray-100 flex flex-col gap-6"
+            className="p-10 bg-white shadow-sm border border-gray-100 flex flex-col gap-6 rounded-3xl"
           >
             <h2 className="text-[28px] md:text-[36px] font-bold text-black uppercase tracking-tight">
               Our <span className="text-[#3c90fc]">Mission</span>
@@ -196,7 +200,7 @@ const AboutUs: React.FC = () => {
                   key={i}
                   className="flex items-start gap-4 text-[15px] text-[#474363]"
                 >
-                  {text}
+                  • {text}
                 </li>
               ))}
             </ul>
@@ -204,7 +208,7 @@ const AboutUs: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION: OUR VALUES */}
+      {/* 4. SECTION: OUR VALUES */}
       <section className="relative z-[10] bg-white py-16 md:py-20">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12">
           <motion.div
@@ -218,7 +222,6 @@ const AboutUs: React.FC = () => {
             </h2>
           </motion.div>
 
-          {/* Grid chuyển thành 4 cột để thẻ nằm dọc */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {ourValues.map((value, index) => (
               <motion.div
@@ -227,9 +230,8 @@ const AboutUs: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative h-[500px]  overflow-hidden cursor-pointer"
+                className="group relative h-[500px] overflow-hidden cursor-pointer rounded-3xl"
               >
-                {/* 1. Ảnh Background (Zoom khi hover) */}
                 <motion.div
                   className="absolute inset-0 bg-cover bg-center z-0"
                   style={{ backgroundImage: `url(${value.img})` }}
@@ -237,9 +239,8 @@ const AboutUs: React.FC = () => {
                   transition={{ duration: 0.8, ease: "easeOut" }}
                 />
 
-                {/* 2. Lớp phủ Gradient Xanh (Rõ dần từ dưới lên) + Nội dung */}
                 <div
-                  className="absolute inset-0 z-10 flex flex-col justify-end p-8 transition-all duration-700 ease-in-out group-hover:opacity-0 group-hover:pointer-events-none"
+                  className="absolute inset-0 z-10 flex flex-col justify-end p-8 transition-all duration-700 ease-in-out group-hover:opacity-0"
                   style={{
                     background:
                       "linear-gradient(to top, rgba(60, 144, 252, 1) 0%, rgba(60, 144, 252, 0.8) 30%, rgba(60, 144, 252, 0) 100%)",
@@ -252,9 +253,7 @@ const AboutUs: React.FC = () => {
                     {value.desc}
                   </p>
                 </div>
-
-                {/* 3. Lớp viền mỏng khi hover để định hình thẻ */}
-                <div className="absolute inset-0 border border-white/10 group-hover:border-[#3c90fc]/30 rounded-[24px] transition-all duration-500 z-20 pointer-events-none" />
+                <div className="absolute inset-0 border border-white/10 group-hover:border-[#3c90fc]/30 rounded-3xl transition-all duration-500 z-20 pointer-events-none" />
               </motion.div>
             ))}
           </div>

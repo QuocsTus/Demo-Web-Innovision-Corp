@@ -184,6 +184,8 @@ const Homepage: React.FC = () => {
 
   // 2. Achievements Auto-play & Pause on Hover
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (isAchievementPaused) return;
     const interval = setInterval(() => {
       setAchievementIndex((prev) => (prev + 1) % achievements.length);
@@ -433,7 +435,7 @@ const Homepage: React.FC = () => {
               );
             })}
           </div>
-         
+
           {/* 2. KHỐI LOGO CHẠY NGANG (INFINITE MARQUEE) */}
           <div className="relative mt-20 pt-10 border-t border-gray-50">
             {/* Tiêu đề ẩn, bạn có thể uncomment nếu muốn hiện lại */}
