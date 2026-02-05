@@ -47,15 +47,18 @@ const Homepage: React.FC = () => {
     {
       title: "AI Products LLM & Edge AI",
       description: "Enterprise LLM and edge AI for intelligent automation.",
+      icon: "/chat-bot.svg",
     },
     {
       title: "Industrial AI & Automation Smart Manufacturing",
       description:
         "Smart vision, predictive maintenance, and seamless factory integration.",
+      icon: "/cyborg-3.svg",
     },
     {
       title: "Software & Firmware",
       description: "End-to-end software from devices to cloud platforms.",
+      icon: "/screen-share.svg",
     },
   ];
 
@@ -222,7 +225,7 @@ const Homepage: React.FC = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-[44px] md:text-[72px] font-bold text-[#3c90fc] tracking-tighter"
           >
-            ABOUT US
+            Beyond Intelligent
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -257,11 +260,19 @@ const Homepage: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 className={`group relative p-8 bg-white border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-6 flex flex-col items-center text-center
-                ${index === 1 ? "md:h-[400px] md:-translate-y-8 z-20 border-[#3c90fc]/20" : "md:h-[340px] z-10"}`}
+      ${index === 1 ? "md:h-[400px] md:-translate-y-8 z-20 border-[#3c90fc]/20" : "md:h-[340px] z-10"}`}
               >
-                <div className="w-16 h-16 rounded-2xl bg-[#3c90fc]/10 flex items-center justify-center mb-8">
-                  <div className="w-7 h-7 border-2 border-[#3c90fc] rounded-full border-t-transparent animate-spin-[3s_linear_infinite]" />
+                {/* PHẦN ĐÃ SỬA ĐỂ ADD SVG */}
+                <div className="w-24 h-24 rounded-2xl  flex items-center justify-center mb-8 group-hover:bg-[#3c90fc] transition-all duration-500">
+                  <img
+                    src={item.icon}
+                    alt={item.title}
+                    className="w-24 h-24 object-contain transition-all duration-500 group-hover:brightness-0 group-hover:invert"
+                    /* Mẹo: brightness-0 invert sẽ biến icon màu bất kỳ thành màu TRẮNG khi hover */
+                  />
                 </div>
+                {/* ------------------------- */}
+
                 <h3 className="text-[22px] font-bold text-black mb-4">
                   {item.title}
                 </h3>
