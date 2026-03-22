@@ -12,8 +12,10 @@
     "start:frontend": "next start frontend",
     "backend:start": "node backend/server.js",
     "lint": "eslint frontend/src",
-    "prisma:generate": "prisma generate --schema backend/prisma/schema.prisma",
-    "db:push": "prisma db push --schema backend/prisma/schema.prisma"
+    "prisma:generate": "cd backend && npx prisma generate --schema prisma/schema.prisma",
+    "db:push": "cd backend && npx prisma db push --schema prisma/schema.prisma",
+    "db:seed": "node backend/prisma/seed.js",
+    "secret:sync": "node scripts/sync-admin-secret.js"
   },
   "dependencies": {
     "@prisma/client": "^6.16.3",
