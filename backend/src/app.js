@@ -13,10 +13,32 @@ const { adminSolutionsRouter } = require("./modules/solutions/solutions.admin.ro
 const { adminAuthRouter } = require("./modules/admin/admin.routes");
 
 const app = express();
+const allowedOrigins = new Set(env.frontendOrigins);
 
 app.use(
   cors({
-    origin: env.frontendOrigin,
+    origin(origin, callback) {
+      if (!origin) {
+        callback(null, true);
+        return;
+      }
+
+      if (allowedOrigins.has(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      if (
+        env.allowVercelPreviewOrigins &&
+        origin.startsWith("https://") &&
+        origin.endsWith(".vercel.app")
+      ) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error("Origin not allowed by CORS"));
+    },
     credentials: true,
   }),
 );
