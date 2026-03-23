@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model BlogPost {
-  id           String   @id @default(cuid())
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
   slug         String   @unique
   title        String
   excerpt      String
@@ -28,7 +28,7 @@ model BlogPost {
 }
 
 model PortfolioItem {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   slug      String   @unique
   title     String
   metric    String
@@ -47,7 +47,7 @@ model PortfolioItem {
 }
 
 model SolutionItem {
-  id        String   @id @default(cuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   slug      String   @unique
   title     String
   desc      String

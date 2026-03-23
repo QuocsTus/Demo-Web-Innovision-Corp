@@ -3,10 +3,12 @@ const { env } = require("../../config/env");
 const service = require("./admin.service");
 
 function cookieOptions() {
+  const isProduction = env.nodeEnv === "production";
   return {
     httpOnly: true,
-    sameSite: "lax",
-    secure: env.nodeEnv === "production",
+    // Vercel frontend + Railway backend are cross-site in production.
+    sameSite: isProduction ? "none" : "lax",
+    secure: isProduction,
     path: "/",
   };
 }
