@@ -72,6 +72,168 @@ const blogSeed = [
     ],
     relatedLinks: [{ label: "About Us", href: "/about-us" }],
   },
+  {
+    slug: "edge-ai-vision-quality-control",
+    title: "Edge AI Vision: Raising Quality Control Accuracy on Production Lines",
+    excerpt:
+      "How edge deployment reduced cloud dependency while keeping inspection speed stable in manufacturing.",
+    category: "AI & LLM",
+    dateLabel: "Jan 29, 2026",
+    readTime: "6 min read",
+    image: "/IndustrialAI.webp",
+    featured: false,
+    published: true,
+    keywords: ["edge ai", "vision", "quality control", "factory"],
+    content: [
+      {
+        heading: "Why Edge First",
+        text: "For latency-sensitive inspection tasks, edge inference keeps response times consistent.",
+      },
+    ],
+    relatedLinks: [{ label: "Industrial AI", href: "/solutions/coming-soon" }],
+  },
+  {
+    slug: "llm-evaluation-framework-practical-guide",
+    title: "Practical Guide: LLM Evaluation Framework for Product Teams",
+    excerpt:
+      "A simple but effective framework to measure quality, safety, and drift in LLM features.",
+    category: "AI & LLM",
+    dateLabel: "Dec 18, 2025",
+    readTime: "7 min read",
+    image: "/AI_Product.webp",
+    featured: false,
+    published: true,
+    keywords: ["llm eval", "quality", "safety", "drift"],
+    content: [
+      {
+        heading: "Metric Design",
+        text: "Use task-specific scoring and weighted benchmarks aligned to business outcomes.",
+      },
+    ],
+    relatedLinks: [{ label: "AI Products", href: "/solutions/ai-products-2" }],
+  },
+  {
+    slug: "embedded-cloud-integration-patterns",
+    title: "Embedded + Cloud Integration Patterns We Use in Client Delivery",
+    excerpt:
+      "Reliable design patterns for syncing device firmware workflows with cloud application layers.",
+    category: "Engineering",
+    dateLabel: "Dec 10, 2025",
+    readTime: "6 min read",
+    image: "/softwareAndFirmware.webp",
+    featured: false,
+    published: true,
+    keywords: ["embedded", "cloud", "iot", "integration"],
+    content: [
+      {
+        heading: "Event Contracts",
+        text: "Define strict message schemas to stabilize communication between device and cloud services.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Software & Firmware", href: "/solutions/software-firmware-development-2" },
+    ],
+  },
+  {
+    slug: "fintech-kyc-automation-results",
+    title: "Fintech KYC Automation: Results from a Multi-stage AI Pipeline",
+    excerpt:
+      "From OCR to verification scoring, a breakdown of the architecture and business impact.",
+    category: "Project Success",
+    dateLabel: "Jan 03, 2026",
+    readTime: "6 min read",
+    image: "/portfolio/banner/fintech_verification_AI.webp",
+    featured: false,
+    published: true,
+    keywords: ["fintech", "kyc", "ocr", "verification"],
+    content: [
+      {
+        heading: "Architecture",
+        text: "The pipeline combines OCR extraction, rule checks, and model-assisted review prioritization.",
+      },
+    ],
+    relatedLinks: [{ label: "Case Study", href: "/portfolio/fintech-verification-ai" }],
+  },
+  {
+    slug: "enterprise-rag-security-guidelines",
+    title: "Security Guidelines for Enterprise RAG Deployments",
+    excerpt:
+      "Practical controls for data access, source grounding, and prompt governance in enterprise RAG.",
+    category: "Engineering",
+    dateLabel: "Jan 16, 2026",
+    readTime: "6 min read",
+    image: "/banner-aboutus.webp",
+    featured: false,
+    published: true,
+    keywords: ["rag security", "enterprise ai", "governance", "access control"],
+    content: [
+      {
+        heading: "Data Boundaries",
+        text: "Restrict retrieval scope by role and context to prevent information overexposure.",
+      },
+    ],
+    relatedLinks: [{ label: "AI Products", href: "/solutions/ai-products-2" }],
+  },
+  {
+    slug: "event-ai-manufacturing-summit-2026",
+    title: "Event Recap: AI Manufacturing Summit 2026",
+    excerpt:
+      "Key takeaways from expert sessions on vision AI, edge deployment, and factory modernization.",
+    category: "Events",
+    dateLabel: "Dec 26, 2025",
+    readTime: "5 min read",
+    image: "/IndustrialAI.webp",
+    featured: false,
+    published: true,
+    keywords: ["event", "summit", "manufacturing", "edge"],
+    content: [
+      {
+        heading: "Main Themes",
+        text: "Teams focused on reliability, maintainability, and change management for industrial AI adoption.",
+      },
+    ],
+    relatedLinks: [{ label: "Portfolio", href: "/portfolio" }],
+  },
+  {
+    slug: "year-end-engineering-retrospective-2025",
+    title: "Engineering Retrospective 2025: Delivery Lessons That Matter",
+    excerpt:
+      "A reflection on architecture, team process, and product quality practices from the past year.",
+    category: "Company News",
+    dateLabel: "Nov 27, 2025",
+    readTime: "6 min read",
+    image: "/banner-aboutus.webp",
+    featured: false,
+    published: true,
+    keywords: ["retrospective", "engineering", "delivery", "team process"],
+    content: [
+      {
+        heading: "What Worked",
+        text: "Cross-functional sprint planning reduced handoff friction and improved predictability.",
+      },
+    ],
+    relatedLinks: [{ label: "About Us", href: "/about-us" }],
+  },
+  {
+    slug: "innovision-partnership-expansion-2026",
+    title: "INNOVISION Expands Regional Partnership Network in 2026",
+    excerpt:
+      "A strategic update on ecosystem partnerships to accelerate delivery and support.",
+    category: "Company News",
+    dateLabel: "Jan 09, 2026",
+    readTime: "4 min read",
+    image: "/banner-aboutus.webp",
+    featured: false,
+    published: true,
+    keywords: ["partnership", "company news", "ecosystem", "2026"],
+    content: [
+      {
+        heading: "Partnership Scope",
+        text: "The new network includes cloud, semiconductor, and implementation partners across regions.",
+      },
+    ],
+    relatedLinks: [{ label: "About Us", href: "/about-us" }],
+  },
 ];
 
 const portfolioSeed = [
@@ -117,6 +279,34 @@ const portfolioSeed = [
     published: true,
     sortOrder: 3,
   },
+  {
+    slug: "government-document-ai-2",
+    title: "Government Document AI",
+    metric: "60% faster processing",
+    summary:
+      "Secure LLM-powered retrieval and summarization workflow for government document archives.",
+    category: "AI Products",
+    image: "/portfolio/banner/government_document_AI.webp",
+    route: "/portfolio/government-document-ai-2",
+    tags: ["NLP", "Document AI", "Gov Tech"],
+    featured: false,
+    published: true,
+    sortOrder: 4,
+  },
+  {
+    slug: "marketing-content-assistant-2",
+    title: "Marketing Content Assistant",
+    metric: "3x content output",
+    summary:
+      "AI content workspace helping teams create campaign assets faster with consistent quality.",
+    category: "AI Products",
+    image: "/portfolio/banner/marketing_content_assistant.webp",
+    route: "/portfolio/marketing-content-assistant-2",
+    tags: ["Content Gen", "Automation", "Marketing"],
+    featured: false,
+    published: true,
+    sortOrder: 5,
+  },
 ];
 
 const solutionsSeed = [
@@ -161,6 +351,34 @@ const solutionsSeed = [
     features: ["Custom Web/App", "Embedded C/C++", "Cloud Architecture"],
     published: true,
     sortOrder: 3,
+  },
+  {
+    slug: "vision-qa-assistant",
+    title: "Vision QA Assistant",
+    desc: "Automated visual QA workflows for rapid defect detection and quality tracing.",
+    image: "/IndustrialAI.webp",
+    route: "/solutions/coming-soon",
+    category: "Computer Vision",
+    metric: "98% detection precision",
+    accent: "from-emerald-500 to-teal-500",
+    icon: "ScanSearch",
+    features: ["Image Classification", "Defect Highlighting", "Shift Reports"],
+    published: true,
+    sortOrder: 4,
+  },
+  {
+    slug: "enterprise-rag-knowledge-hub",
+    title: "Enterprise RAG Knowledge Hub",
+    desc: "Unified retrieval hub for company knowledge with citations, governance, and role-based access.",
+    image: "/AI_Product.webp",
+    route: "/solutions/ai-products-2",
+    category: "Knowledge Systems",
+    metric: "70% faster lookup",
+    accent: "from-fuchsia-500 to-pink-500",
+    icon: "Database",
+    features: ["Source Grounding", "Access Control", "Prompt Governance"],
+    published: true,
+    sortOrder: 5,
   },
 ];
 
